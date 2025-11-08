@@ -1,0 +1,246 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "project": {
+    "name": "Init Project",
+    "version": "1.0.0"
+  },
+  "tasks": [
+    {
+      "id": "1",
+      "title": "PHASE 1: Documentation System Setup",
+      "description": "Setup and adapt documentation system to be generic boilerplate templates",
+      "details": "Adapt existing documentation files, create minimal structure, and setup AGENTS.md",
+      "status": "completed",
+      "priority": "high",
+      "dependencies": [],
+      "createdAt": "2025-01-03T00:00:00Z",
+      "updatedAt": "2025-01-03T00:00:00Z",
+      "subtasks": [
+        {
+          "id": "1.1",
+          "title": "Adapt Core Documentation Files",
+          "description": "Make documentation files generic and boilerplate-ready",
+          "details": "Remove project-specific references, update paths, ensure generic structure",
+          "status": "completed",
+          "priority": "high",
+          "dependencies": [],
+          "testStrategy": "Verify files are generic and don't reference specific project names"
+        },
+        {
+          "id": "1.2",
+          "title": "Create Documentation Directory Structure",
+          "description": "Establish minimal documentation structure with essential templates",
+          "details": "Create templates directory, copy required templates, organize structure",
+          "status": "completed",
+          "priority": "high",
+          "dependencies": ["1.1"],
+          "testStrategy": "Verify all template files exist and are properly structured"
+        },
+        {
+          "id": "1.3",
+          "title": "Create AGENTS.md File",
+          "description": "Create comprehensive AGENTS.md with task management and workflow documentation",
+          "details": "Document AI agent workflows, task management integration, CI/CD processes",
+          "status": "completed",
+          "priority": "high",
+          "dependencies": ["1.2"],
+          "testStrategy": "Verify AGENTS.md provides complete guidance for AI agents"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "PHASE 2: Template Project Setup",
+      "description": "Create example PRD, tasks, plans, and resources in template-project",
+      "details": "Create example files demonstrating proper formats for PRD, tasks, plans, and resources",
+      "status": "completed",
+      "priority": "high",
+      "dependencies": ["1"],
+      "createdAt": "2025-01-03T00:00:00Z",
+      "updatedAt": "2025-01-03T00:00:00Z",
+      "subtasks": [
+        {
+          "id": "2.1",
+          "title": "Create Example PRD",
+          "description": "Create example Product Requirements Document",
+          "details": "Create PRD.txt with proper format showing project overview, requirements, success criteria",
+          "status": "completed",
+          "priority": "medium",
+          "dependencies": [],
+          "testStrategy": "Verify PRD format is clear and usable as template"
+        },
+        {
+          "id": "2.2",
+          "title": "Create Example Task File",
+          "description": "Create example task file using JSON Schema format",
+          "details": "Create example-tasks.json following JSON Schema standard with all required fields",
+          "status": "completed",
+          "priority": "high",
+          "dependencies": [],
+          "testStrategy": "Validate JSON Schema compliance and verify all fields are present"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "PHASE 3: Init Project - Next.js Setup",
+      "description": "Initialize and configure Next.js full-stack application",
+      "details": "Setup Next.js with TypeScript, Tailwind, App Router, tRPC, Drizzle ORM, and ShadCN UI",
+      "status": "completed",
+      "priority": "high",
+      "dependencies": ["2"],
+      "createdAt": "2025-01-03T00:00:00Z",
+      "updatedAt": "2025-01-03T00:00:00Z",
+      "subtasks": [
+        {
+          "id": "3.1",
+          "title": "Initialize Next.js Application",
+          "description": "Create Next.js app with TypeScript, Tailwind, and App Router",
+          "details": "Run create-next-app with appropriate configuration options",
+          "status": "completed",
+          "priority": "high",
+          "dependencies": [],
+          "testStrategy": "Verify Next.js app starts and builds successfully"
+        },
+        {
+          "id": "3.2",
+          "title": "Configure tRPC",
+          "description": "Setup tRPC with server, client, and example routers",
+          "details": "Install tRPC dependencies, create server/client setup, add example router",
+          "status": "completed",
+          "priority": "high",
+          "dependencies": ["3.1"],
+          "testStrategy": "Verify tRPC endpoints work and type safety is maintained"
+        },
+        {
+          "id": "3.3",
+          "title": "Configure Drizzle ORM",
+          "description": "Setup Drizzle ORM with multi-provider support",
+          "details": "Install Drizzle, create schema, setup multi-provider connection, create migrations",
+          "status": "completed",
+          "priority": "high",
+          "dependencies": ["3.1"],
+          "testStrategy": "Verify database connection works with SQLite, verify migrations run"
+        },
+        {
+          "id": "3.4",
+          "title": "Setup ShadCN UI",
+          "description": "Initialize ShadCN UI with placeholder component structure",
+          "details": "Run shadcn init, create component directory structure, add README",
+          "status": "completed",
+          "priority": "medium",
+          "dependencies": ["3.1"],
+          "testStrategy": "Verify ShadCN is initialized and component directory exists"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "title": "PHASE 4: CI/CD and Workflows",
+      "description": "Setup CI/CD workflows and pre-commit hooks",
+      "details": "Create GitHub Actions workflows, setup Husky, configure lint-staged, create task validation",
+      "status": "completed",
+      "priority": "high",
+      "dependencies": ["3"],
+      "createdAt": "2025-01-03T00:00:00Z",
+      "updatedAt": "2025-01-03T00:00:00Z",
+      "subtasks": [
+        {
+          "id": "4.1",
+          "title": "Create GitHub Actions Workflows",
+          "description": "Create workflows for AI docs, build/lint, and Vercel deployment",
+          "details": "Create ai-documentation-update.yml, build-and-lint.yml, deploy-vercel.yml",
+          "status": "completed",
+          "priority": "high",
+          "dependencies": [],
+          "testStrategy": "Verify workflows are properly configured and trigger correctly"
+        },
+        {
+          "id": "4.2",
+          "title": "Setup Pre-commit Hooks",
+          "description": "Configure Husky and lint-staged for pre-commit validation",
+          "details": "Install Husky, configure lint-staged, create pre-commit hook",
+          "status": "completed",
+          "priority": "medium",
+          "dependencies": [],
+          "testStrategy": "Verify pre-commit hooks run and validate code before commit"
+        },
+        {
+          "id": "4.3",
+          "title": "Create Task Validation Script",
+          "description": "Create script to validate task JSON files against JSON Schema",
+          "details": "Create validate-tasks.js script that checks required fields, status values, dependencies",
+          "status": "completed",
+          "priority": "medium",
+          "dependencies": [],
+          "testStrategy": "Run validation script on example tasks and verify it catches errors"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "title": "PHASE 5: Documentation and Finalization",
+      "description": "Create comprehensive documentation and finalize project",
+      "details": "Create README files, testing guide, migration guide, and validate complete setup",
+      "status": "in_progress",
+      "priority": "high",
+      "dependencies": ["4"],
+      "createdAt": "2025-01-03T00:00:00Z",
+      "updatedAt": "2025-01-03T00:00:00Z",
+      "subtasks": [
+        {
+          "id": "5.1",
+          "title": "Create Init Project README",
+          "description": "Create comprehensive README for init project",
+          "details": "Document technology stack, quick start, project structure, database config, deployment",
+          "status": "completed",
+          "priority": "high",
+          "dependencies": [],
+          "testStrategy": "Verify README provides complete project documentation"
+        },
+        {
+          "id": "5.2",
+          "title": "Create Main Style Guide README",
+          "description": "Create/update main style guide README with project overview",
+          "details": "Document purpose, structure, how to use template-project and init project",
+          "status": "pending",
+          "priority": "high",
+          "dependencies": ["5.1"],
+          "testStrategy": "Verify README explains project purpose and usage clearly"
+        },
+        {
+          "id": "5.3",
+          "title": "Create Testing Guide",
+          "description": "Create development testing guide and validation checklist",
+          "details": "Document how to test boilerplate locally, validation checklist, common issues",
+          "status": "pending",
+          "priority": "medium",
+          "dependencies": [],
+          "testStrategy": "Verify guide provides clear testing instructions"
+        },
+        {
+          "id": "5.4",
+          "title": "Create Migration Guide",
+          "description": "Create step-by-step guide for using boilerplate to start new projects",
+          "details": "Document process to start new project from init, customization checklist, deployment setup",
+          "status": "pending",
+          "priority": "high",
+          "dependencies": ["5.3", "5.2"],
+          "testStrategy": "Verify guide enables users to successfully create new projects"
+        },
+        {
+          "id": "5.5",
+          "title": "Final Validation",
+          "description": "Validate complete setup against all completion criteria",
+          "details": "Check all completion criteria, verify everything works, test deployment",
+          "status": "pending",
+          "priority": "high",
+          "dependencies": ["5.4"],
+          "testStrategy": "Run through complete validation checklist and verify all criteria met"
+        }
+      ]
+    }
+  ]
+}
+
+

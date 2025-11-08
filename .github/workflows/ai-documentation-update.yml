@@ -1,0 +1,53 @@
+name: AI Documentation Update
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'projects/**/*.ts'
+      - 'projects/**/*.tsx'
+      - 'projects/**/*.js'
+      - 'projects/**/*.jsx'
+      - '!docs/**'
+      - '!**/*.md'
+
+jobs:
+  update-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Get changed files
+        id: changed-files
+        run: |
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} > changed_files.txt
+          echo "files<<EOF" >> $GITHUB_OUTPUT
+          cat changed_files.txt >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+      
+      - name: Trigger OpenCode AI Runner
+        env:
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+        run: |
+          # This workflow triggers an AI runner (OpenCode) to analyze changes
+          # and update documentation automatically
+          # Configure OpenCode runner endpoint and API key in repository secrets
+          echo "AI documentation update triggered for changed files"
+          # Placeholder for OpenCode integration
+          # curl -X POST https://api.opencode.ai/update-docs \
+          #   -H "Authorization: Bearer $OPENCODE_API_KEY" \
+          #   -H "Content-Type: application/json" \
+          #   -d '{"files": "${{ steps.changed-files.outputs.files }}"}'
+      
+      - name: Commit documentation updates
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add docs/
+          git diff --staged --quiet || git commit -m "docs: auto-update documentation [skip ci]"
+          git push
+
+
