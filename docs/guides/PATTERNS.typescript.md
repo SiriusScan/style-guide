@@ -10,8 +10,8 @@ categories: ["development", "standards"]
 difficulty: "intermediate"
 prerequisites: ["typescript", "react"]
 related_docs:
-  - "README.ui-style-guide.md"
-  - "PATTERNS.components.md"
+  - "../development/README.ui-style-guide.md"
+  - "../guides/PATTERNS.components.md"
 dependencies: []
 llm_context: "high"
 search_keywords: ["typescript patterns", "props", "data flow", "component patterns", "type safety"]
@@ -475,5 +475,4 @@ if (isUserData(response)) {
 ---
 
 _These patterns are mandatory for all TypeScript development in this project._
-
 

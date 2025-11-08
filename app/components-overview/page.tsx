@@ -49,7 +49,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { AlertCircle, CheckCircle2, Info, User, Mail, Settings, MoreVertical, Sparkles, Home as HomeIcon, Package, FolderKanban, Layout, ShieldAlert, ArrowUp, Bug, Server } from "lucide-react";
+import { AlertCircle, CheckCircle2, Info, User, Mail, Settings, MoreVertical, Sparkles, Home as HomeIcon, Package, FolderKanban, Layout, ShieldAlert, ArrowUp, Bug, Server, BookOpen } from "lucide-react";
 import { MetricCard } from "@/components/ui/metric-card";
 import { RadialProgress } from "@/components/ui/radial-progress";
 import { StatusIndicator } from "@/components/ui/status-indicator";
@@ -59,6 +59,7 @@ const navItems = [
   { label: 'Home', href: '/', icon: <HomeIcon className="h-5 w-5" /> },
   { label: 'Components', href: '/components-overview', icon: <Package className="h-5 w-5" /> },
   { label: 'Projects', href: '/project-management', icon: <FolderKanban className="h-5 w-5" /> },
+  { label: 'Documentation', href: '/documentation', icon: <BookOpen className="h-5 w-5" /> },
   { label: 'Layout Demo', href: '/app-layout-demo', icon: <Layout className="h-5 w-5" /> },
 ];
 

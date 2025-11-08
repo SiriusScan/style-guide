@@ -1,232 +1,478 @@
-# AGENTS
+# AI Agent Guide for Style Guide Boilerplate
 
-This document provides guidance for AI agents working on this project. It covers project structure, documentation system, task management, and development workflows.
+This document provides comprehensive guidance for AI agents working on this Next.js boilerplate project. It explains the technology stack, project structure, documentation system, and development workflows.
 
 ## Project Overview
 
-This is a **style guide boilerplate project** that serves as a starter template for new projects with frontend UI components. The project includes:
+### What This Is
 
-- Comprehensive documentation system
-- Task management system using JSON Schema
-- Next.js full-stack application template
-- CI/CD workflows with AI-powered documentation updates
-- Component library structure
+The **Style Guide Boilerplate** is a production-ready Next.js 16 starter template with:
+
+- **Full-stack TypeScript application** using Next.js App Router
+- **Type-safe API development** with tRPC 11
+- **Database ORM** with Drizzle (SQLite, PostgreSQL, MySQL support)
+- **Modern UI components** using ShadCN UI and Tailwind CSS 4
+- **Comprehensive documentation system** with LLM-optimized structure
+- **Task management system** using JSON Schema
+- **CI/CD workflows** for automated testing and deployment
+
+### Technology Stack
+
+```
+Frontend:     Next.js 16, React 19, TypeScript 5.9
+Backend:      Next.js API Routes, tRPC 11
+Database:     Drizzle ORM (SQLite default, PostgreSQL/MySQL supported)
+UI:           ShadCN UI, Tailwind CSS 4, Radix UI primitives
+State:        TanStack Query (React Query)
+Validation:   Zod 4
+Deployment:   Vercel
+CI/CD:        GitHub Actions
+```
+
+## Quick Start for AI Agents
+
+### 1. Understand the Structure
+
+```
+style-guide/
+├── app/                    # Next.js App Router (pages, layouts, API routes)
+├── components/             # React components
+│   ├── ui/                # ShadCN UI components
+│   ├── layouts/           # Layout components (AppLayout, PageLayout, etc.)
+│   ├── loaders/           # Loading components
+│   └── [feature]/         # Feature-specific components
+├── lib/                    # Utilities and configurations
+│   ├── db/               # Drizzle ORM (database)
+│   ├── trpc/             # tRPC setup (API)
+│   ├── types/            # TypeScript type definitions
+│   └── utils/            # Utility functions
+├── docs/                   # Documentation system
+│   ├── guides/           # Developer guides (how-to)
+│   └── development/      # Project-specific docs
+├── projects/               # Example projects and templates
+│   └── template-project/ # Template with PRD, plans, tasks, resources
+├── scripts/                # Utility scripts
+│   └── tests/            # Test scripts (TypeScript)
+└── public/                # Static assets
+```
+
+### 2. Read the Essential Guides
+
+Before making any changes, read these guides in order:
+
+1. **[Creating Pages](docs/guides/GUIDE.creating-pages.md)** - Learn page structure
+2. **[Component Usage](docs/guides/GUIDE.component-usage.md)** - Understand components
+3. **[TypeScript Patterns](docs/guides/PATTERNS.typescript.md)** - TypeScript conventions
+4. **[Code Organization](docs/guides/PATTERNS.code-organization.md)** - File structure
+
+### 3. Development Workflow
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Type checking
+npm run type-check
+
+# Linting
+npm run lint
+
+# Build for production
+npm run build
+
+# Database migrations
+npm run db:generate  # Generate migrations
+npm run db:migrate   # Run migrations
+npm run db:studio    # Open database UI
+```
 
 ## Documentation System
 
-### Core Documentation
+### Directory Organization
 
-- **[ABOUT.documentation.md](docs/ABOUT.documentation.md)**: Documentation standards and conventions
-- **[README.ui-style-guide.md](docs/development/README.ui-style-guide.md)**: UI style guide template
-- **[README.task-management.md](docs/development/README.task-management.md)**: Task management system guide
+**`docs/guides/`** - Developer guides and tutorials
+- How-to guides for common development tasks
+- Code patterns and conventions
+- Language-agnostic best practices
 
-### Documentation Standards
+**`docs/development/`** - Project-specific documentation
+- Project setup and configuration
+- Project-specific workflows
+- Task management system
 
-All documentation follows a structured format with YAML front matter:
+**`docs/templates/`** - Documentation templates
+- Templates for creating new documentation
+- Ensure consistency across docs
 
-- **Required fields**: `title`, `description`, `template`, `version`, `last_updated`
-- **Optional fields**: `tags`, `categories`, `related_docs`, `llm_context`, `search_keywords`
-- **Templates**: Located in `docs/templates/` directory
+### Available Guides
 
-### Using Documentation
+**Essential Guides** (Read First):
+- [GUIDE.creating-pages.md](docs/guides/GUIDE.creating-pages.md) - Creating new pages in Next.js
+- [GUIDE.component-usage.md](docs/guides/GUIDE.component-usage.md) - Using layout and UI components
+- [GUIDE.styling-conventions.md](docs/guides/GUIDE.styling-conventions.md) - Tailwind CSS patterns
+- [GUIDE.trpc-api-development.md](docs/guides/GUIDE.trpc-api-development.md) - Building type-safe APIs
+- [GUIDE.database-development.md](docs/guides/GUIDE.database-development.md) - Drizzle ORM patterns
 
-1. **Before creating docs**: Review [ABOUT.documentation.md](docs/ABOUT.documentation.md)
-2. **Choose template**: Select appropriate template from `docs/templates/`
-3. **Follow structure**: Use template structure for consistency
-4. **Add front matter**: Include complete YAML metadata
-5. **Link documents**: Establish relationships via `related_docs`
+**Pattern Documents** (Reference):
+- [PATTERNS.components.md](docs/guides/PATTERNS.components.md) - Mandatory component patterns
+- [PATTERNS.typescript.md](docs/guides/PATTERNS.typescript.md) - TypeScript conventions
+- [PATTERNS.code-organization.md](docs/guides/PATTERNS.code-organization.md) - File organization
 
-### AI Documentation Updates
+**Project Documentation**:
+- [README.ui-style-guide.md](docs/development/README.ui-style-guide.md) - UI style guide
+- [README.task-management.md](docs/development/README.task-management.md) - Task system
+- [ABOUT.documentation.md](docs/ABOUT.documentation.md) - Documentation standards
 
-The project includes CI/CD workflows that automatically update documentation:
+## Core Technologies
 
-- **Trigger**: On code changes (excludes docs/ directory)
-- **Process**: AI analyzes changes and updates relevant documentation
-- **Commit**: Documentation updates are automatically committed
-- **Workflow**: `.github/workflows/ai-documentation-update.yml`
+### Next.js App Router
+
+- **Location**: `app/` directory
+- **Routing**: File-system based (`app/[route]/page.tsx`)
+- **Layouts**: Shared layouts in `app/layout.tsx`
+- **API Routes**: `app/api/` directory
+- **Server Components**: Default (use `"use client"` for client components)
+
+**Key Files**:
+- `app/layout.tsx` - Root layout
+- `app/page.tsx` - Homepage
+- `app/globals.css` - Global styles
+
+### tRPC (Type-Safe APIs)
+
+- **Location**: `lib/trpc/`
+- **Router Definition**: `lib/trpc/routers/_app.ts`
+- **Server Setup**: `lib/trpc/server.ts`
+- **Client Setup**: `lib/trpc/client.ts`
+
+**Creating a New API Endpoint**:
+1. Create router in `lib/trpc/routers/my-feature.ts`
+2. Add to `_app.ts` router
+3. Use in components via `trpc.myFeature.myProcedure.useQuery()`
+
+**Example**:
+```typescript
+// lib/trpc/routers/my-feature.ts
+import { router, publicProcedure } from '../server';
+import { z } from 'zod';
+
+export const myFeatureRouter = router({
+  getData: publicProcedure
+    .input(z.object({ id: z.string() }))
+    .query(async ({ input }) => {
+      return { id: input.id, data: 'some data' };
+    }),
+});
+```
+
+See [GUIDE.trpc-api-development.md](docs/guides/GUIDE.trpc-api-development.md) for complete guide.
+
+### Drizzle ORM (Database)
+
+- **Location**: `lib/db/`
+- **Schema**: `lib/db/schema.ts`
+- **Connection**: `lib/db/index.ts`
+- **Migrations**: `lib/db/migrate.ts`
+
+**Supported Databases**:
+- SQLite (default) - Good for development
+- PostgreSQL - Recommended for production
+- MySQL - Also supported
+
+**Configuration**: Set in `.env`:
+```env
+DATABASE_PROVIDER=sqlite
+DATABASE_URL=./dev.db
+```
+
+**Creating Tables**:
+```typescript
+// lib/db/schema.ts
+import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
+
+export const users = sqliteTable('users', {
+  id: integer('id').primaryKey(),
+  name: text('name').notNull(),
+  email: text('email').notNull().unique(),
+});
+
+export type User = typeof users.$inferSelect;
+export type NewUser = typeof users.$inferInsert;
+```
+
+See [GUIDE.database-development.md](docs/guides/GUIDE.database-development.md) for complete guide.
+
+### ShadCN UI Components
+
+- **Location**: `components/ui/`
+- **Installation**: Components added via `npx shadcn-ui@latest add [component]`
+- **Customization**: Modify in `components/ui/` after installation
+- **Theming**: Configure in `app/globals.css` (CSS variables)
+
+**Key Components**:
+- Button, Card, Input, Select, Dialog, Table, Form
+- All components are TypeScript and use Radix UI primitives
+- Fully customizable with Tailwind CSS
+
+See [GUIDE.component-usage.md](docs/guides/GUIDE.component-usage.md) for usage patterns.
+
+### Tailwind CSS
+
+- **Configuration**: `tailwind.config.ts`
+- **Global Styles**: `app/globals.css`
+- **Color System**: Violet/purple theme (see globals.css)
+- **Dark Mode**: Dark mode by default
+
+**Color Palette**:
+- Primary: Violet gradient (`violet-600` to `purple-600`)
+- Background: Dark (`gray-900`, `gray-800`)
+- Text: Light (`white`, `gray-200`, `gray-300`)
+- Accent: Violet with opacity (`violet-500/10`)
+
+See [GUIDE.styling-conventions.md](docs/guides/GUIDE.styling-conventions.md) for patterns.
+
+## Common Development Tasks
+
+### Creating a New Page
+
+1. Create `app/[route]/page.tsx`
+2. Use `AppLayout` wrapper
+3. Add navigation items
+4. Use `ContentSection` for content
+5. Add tRPC queries if needed
+
+**Example**:
+```typescript
+"use client";
+
+import { AppLayout } from "@/components/layouts";
+import { ContentSection } from "@/components/layouts";
+import { trpc } from "@/lib/trpc/client";
+
+const navItems = [
+  { label: "Home", href: "/", icon: <HomeIcon /> },
+  { label: "My Page", href: "/my-page", icon: <PageIcon /> },
+];
+
+export default function MyPage() {
+  const { data, isLoading } = trpc.example.getData.useQuery();
+
+  return (
+    <AppLayout title="My Page" navItems={navItems}>
+      <ContentSection title="Content">
+        {isLoading ? "Loading..." : data}
+      </ContentSection>
+    </AppLayout>
+  );
+}
+```
+
+See [GUIDE.creating-pages.md](docs/guides/GUIDE.creating-pages.md) for complete guide.
+
+### Creating a New Component
+
+1. Create in appropriate directory (`components/[feature]/`)
+2. Define props interface (TypeScript)
+3. Export interface with component
+4. Use layout components for structure
+5. Add to `index.ts` for barrel export
+
+**Example**:
+```typescript
+// components/my-feature/MyComponent.tsx
+export interface MyComponentProps {
+  title: string;
+  description?: string;
+  onClick?: () => void;
+}
+
+export const MyComponent: React.FC<MyComponentProps> = ({
+  title,
+  description,
+  onClick,
+}) => {
+  return (
+    <div onClick={onClick}>
+      <h3>{title}</h3>
+      {description && <p>{description}</p>}
+    </div>
+  );
+};
+```
+
+See [PATTERNS.typescript.md](docs/guides/PATTERNS.typescript.md) for TypeScript patterns.
+
+### Creating a New API Endpoint
+
+1. Create router in `lib/trpc/routers/`
+2. Define procedures with Zod validation
+3. Add router to `_app.ts`
+4. Use in components via tRPC client
+
+**Example**:
+```typescript
+// lib/trpc/routers/users.ts
+import { router, publicProcedure } from '../server';
+import { z } from 'zod';
+import { db } from '@/lib/db';
+import { users } from '@/lib/db/schema';
+
+export const usersRouter = router({
+  list: publicProcedure.query(async () => {
+    return await db.select().from(users);
+  }),
+
+  create: publicProcedure
+    .input(z.object({
+      name: z.string(),
+      email: z.string().email(),
+    }))
+    .mutation(async ({ input }) => {
+      return await db.insert(users).values(input);
+    }),
+});
+```
+
+See [GUIDE.trpc-api-development.md](docs/guides/GUIDE.trpc-api-development.md) for complete guide.
+
+### Adding Database Tables
+
+1. Define schema in `lib/db/schema.ts`
+2. Generate migration: `npm run db:generate`
+3. Run migration: `npm run db:migrate`
+4. Use in tRPC routers or server components
+
+See [GUIDE.database-development.md](docs/guides/GUIDE.database-development.md) for complete guide.
+
+## File Naming Conventions
+
+### Components
+- **PascalCase**: `UserProfile.tsx`, `TaskCard.tsx`
+- **Location**: `components/[feature]/ComponentName.tsx`
+
+### Utilities
+- **kebab-case**: `filter-utils.ts`, `storage-utils.ts`
+- **Location**: `lib/utils/utility-name.ts`
+
+### Types
+- **kebab-case**: `project-management.ts`, `documentation.ts`
+- **Location**: `lib/types/type-name.ts`
+
+### Pages
+- **Next.js conventions**: `page.tsx`, `layout.tsx`, `route.ts`
+- **Routes**: Use kebab-case for route segments (`/project-management`)
+
+See [PATTERNS.code-organization.md](docs/guides/PATTERNS.code-organization.md) for complete conventions.
+
+## TypeScript Patterns
+
+### Required Patterns
+
+1. **Always define explicit props interfaces**
+2. **Export all props interfaces**
+3. **Type children as `React.ReactNode`**
+4. **Never use `any` type**
+5. **Use optional chaining for nested properties**
+6. **Data flows down (props), events flow up (callbacks)**
+
+**Example**:
+```typescript
+export interface CardProps {
+  title: string;
+  description?: string;
+  variant?: "default" | "primary";
+  children?: React.ReactNode;
+  onClose?: () => void;
+}
+
+export const Card: React.FC<CardProps> = ({
+  title,
+  description,
+  variant = "default",
+  children,
+  onClose,
+}) => {
+  // Implementation
+};
+```
+
+See [PATTERNS.typescript.md](docs/guides/PATTERNS.typescript.md) for complete patterns.
+
+## Component Patterns
+
+### Layout Components (Mandatory)
+
+- **AppLayout**: Use for all pages with navigation
+- **PageLayout**: Use for standalone pages
+- **ContentSection**: Use for content blocks
+- **GridLayout**: Use for responsive grids
+
+**Example**:
+```typescript
+<AppLayout title="My Page" navItems={navItems}>
+  <ContentSection title="Section 1" variant="primary">
+    Primary content
+  </ContentSection>
+  
+  <GridLayout columns={{ md: 2, lg: 3 }}>
+    <ContentSection>Card 1</ContentSection>
+    <ContentSection>Card 2</ContentSection>
+    <ContentSection>Card 3</ContentSection>
+  </GridLayout>
+</AppLayout>
+```
+
+See [PATTERNS.components.md](docs/guides/PATTERNS.components.md) for complete patterns.
 
 ## Task Management System
 
 ### Overview
 
-Tasks are managed using JSON Schema-compliant JSON files located in `projects/[project-name]/tasks/` directories.
+Tasks are managed using JSON Schema-compliant files in `projects/[project-name]/tasks/`.
 
-### Task File Structure
+### Task Structure
 
-Tasks follow a structured JSON format with:
-- Unique IDs (string format)
-- Status tracking (pending, in-progress, completed, blocked)
-- Dependencies between tasks
-- Metadata (title, description, priority, etc.)
-- Test strategies for verification
-
-### Reading Tasks
-
-1. **Locate task file**: Check `projects/[project-name]/tasks/` directory
-2. **Read task structure**: Understand JSON Schema format
-3. **Check status**: Identify pending tasks with completed dependencies
-4. **Review details**: Read task description, details, and test strategy
-
-### Updating Tasks
-
-1. **Change status**: Update `status` field as work progresses
-   - `pending` → `in_progress` when starting
-   - `in_progress` → `completed` when finished
-   - `in_progress` → `blocked` if blocked
-2. **Update metadata**: Add notes, update timestamps if needed
-3. **Validate**: Ensure JSON Schema compliance
-4. **Commit**: Include task updates with code changes
-
-### Task Status Values
-
-- **pending**: Task not started (default)
-- **in_progress**: Currently being worked on
-- **completed**: Finished successfully
-- **blocked**: Cannot proceed (waiting for dependency)
-
-### Task Dependencies
-
-- Check `dependencies` array before starting work
-- Only work on tasks with all dependencies completed
-- Update dependent tasks when completing work
-- Validate dependency references exist
-
-### Documentation
-
-See [README.task-management.md](docs/development/README.task-management.md) for complete task management documentation.
-
-## Project Structure
-
-### Directory Layout
-
-```
-style-guide/
-├── app/                    # Next.js App Router
-├── components/             # React components
-├── lib/                    # Utilities and configurations
-├── docs/                   # Documentation system
-│   ├── ABOUT.documentation.md
-│   ├── templates/          # Document templates
-│   └── development/        # Development docs
-├── projects/               # Example project templates
-│   └── template-project/   # Example project templates
-├── scripts/                # Utility scripts
-├── package.json            # Dependencies and scripts
-└── AGENTS.md              # This file
+```json
+{
+  "id": "1",
+  "title": "Task Title",
+  "description": "Brief description",
+  "details": "Detailed implementation notes",
+  "status": "pending",  // pending | in_progress | completed | blocked
+  "priority": "high",   // low | medium | high
+  "dependencies": [],   // Array of task IDs
+  "testStrategy": "How to verify completion",
+  "subtasks": []        // Nested subtasks
+}
 ```
 
-### Projects Directory
+### Using Tasks
 
-The `projects/` directory contains example project templates. Each project follows this structure:
+1. Review tasks in `projects/[project-name]/tasks/`
+2. Select task with no pending dependencies
+3. Update status to `in_progress`
+4. Complete work
+5. Update status to `completed`
 
-```
-projects/[project-name]/
-├── plans/          # Project plans and milestones
-├── resources/       # Project resources (diagrams, assets)
-└── tasks/          # Task management files
-    └── [task-file].json
-```
+See [README.task-management.md](docs/development/README.task-management.md) for complete guide.
 
-**Note**: The actual Next.js application code is in the root directory, not in `projects/init/`.
+## Testing and Validation
 
-## Development Workflow
+### Pre-Commit Checklist
 
-### Starting Work
+- [ ] Code follows TypeScript patterns
+- [ ] Components use proper interfaces
+- [ ] No `any` types used
+- [ ] All imports resolved
+- [ ] Type checking passes (`npm run type-check`)
+- [ ] Linting passes (`npm run lint`)
+- [ ] Build succeeds (`npm run build`)
+- [ ] Documentation updated if needed
 
-1. **Check current tasks**: Review task files in `projects/[project-name]/tasks/` (for example projects) or create your own task files
-2. **Identify available tasks**: Find tasks with `pending` status and completed dependencies
-3. **Select task**: Choose highest priority available task
-4. **Update status**: Change task status to `in_progress`
-5. **Begin work**: Follow task details and requirements
-
-### During Development
-
-1. **Follow task details**: Implement according to task requirements
-2. **Test implementation**: Use task test strategy for verification
-3. **Update documentation**: Keep docs current with changes
-4. **Commit regularly**: Include task status updates in commits
-
-### Completing Work
-
-1. **Verify completion**: Ensure all task requirements met
-2. **Run tests**: Execute test strategy from task
-3. **Update task**: Change status to `completed`
-4. **Check dependencies**: Review tasks that depend on this one
-5. **Commit changes**: Include code and task updates
-
-### Git Integration
-
-- **Commit messages**: Reference task IDs when relevant
-- **Task updates**: Commit task file changes with code changes
-- **Branch naming**: Use descriptive branch names
-- **PR descriptions**: Include task completion status
-
-## CI/CD Workflows
-
-### AI Documentation Updates
-
-**Workflow**: `.github/workflows/ai-documentation-update.yml`
-
-- **Trigger**: Push to main branch
-- **Filters**: Excludes docs/ directory changes
-- **Process**: AI analyzes code changes and updates documentation
-- **Output**: Commits documentation updates automatically
-
-### Build and Lint
-
-**Workflow**: `.github/workflows/build-and-lint.yml`
-
-- **Trigger**: Pre-commit validation
-- **Checks**: TypeScript, ESLint, Prettier, build test
-- **Purpose**: Prevent build errors before deployment
-
-### Deployment
-
-**Workflow**: `.github/workflows/deploy-vercel.yml`
-
-- **Trigger**: Push to main branch
-- **Process**: Validates, builds, and deploys to Vercel
-- **Output**: Posts deployment URL in PR comments
-
-## Code Standards
-
-### TypeScript/React
-
-- **TypeScript**: Strict mode enabled
-- **React**: Server Components by default
-- **Formatting**: Prettier with project config
-- **Linting**: ESLint with Next.js rules
-
-### File Organization
-
-- **Components**: `components/` directory (root level)
-- **UI Components**: `components/ui/` (ShadCN components)
-- **Utilities**: `lib/` directory (root level)
-- **API Routes**: `app/api/` directory (root level)
-- **Pages**: `app/` directory (App Router, root level)
-
-### Naming Conventions
-
-- **Components**: PascalCase (e.g., `UserProfile.tsx`)
-- **Utilities**: camelCase (e.g., `formatDate.ts`)
-- **Constants**: SCREAMING_SNAKE_CASE
-- **Files**: kebab-case for utilities, PascalCase for components
-
-## Testing
-
-### Validation Checklist
-
-Before marking tasks as complete:
-
-- [ ] Code follows project standards
-- [ ] Tests pass according to test strategy
-- [ ] Documentation is updated
-- [ ] Task status is updated
-- [ ] Dependencies are satisfied
-- [ ] No linting errors
-- [ ] Build succeeds
-
-### Running Tests
+### Running Checks
 
 ```bash
 # Type checking
@@ -237,138 +483,137 @@ npm run lint
 
 # Build test
 npm run build
+
+# All checks
+npm run type-check && npm run lint && npm run build
 ```
 
-## Common Commands
+## Common Issues and Solutions
 
-### Documentation
+### Build Errors
 
-```bash
-# Validate documentation
-npx markdownlint-cli2 'docs/**/*.md'
+**Problem**: TypeScript errors during build
+- **Solution**: Run `npm run type-check` to see detailed errors
+- **Check**: Props interfaces defined correctly
+- **Check**: All imports exist and are typed
 
-# Check YAML front matter
-yamllint docs/**/*.md
-```
+### tRPC Errors
 
-### Development
+**Problem**: tRPC endpoint not found
+- **Solution**: Ensure router added to `_app.ts`
+- **Check**: Router exported correctly
+- **Check**: Client/server setup matches
 
-```bash
-# Start development server
-npm run dev
-
-# Build project
-npm run build
-
-# Run linting
-npm run lint
-
-# Type check
-npm run type-check
-```
-
-### Database
-
-```bash
-# Generate migrations
-npm run db:generate
-
-# Run migrations
-npm run db:migrate
-
-# Open Drizzle Studio
-npm run db:studio
-```
-
-### Tasks
-
-```bash
-# Validate task files
-node scripts/validate-tasks.js
-
-# View task structure
-cat projects/[project-name]/tasks/[task-file].json
-```
-
-## Troubleshooting
-
-### Task Issues
-
-**Problem**: Task file not found
-- **Solution**: Check `projects/[project-name]/tasks/` directory
-
-**Problem**: Invalid task status
-- **Solution**: Use only: `pending`, `in_progress`, `completed`, `blocked`
-
-**Problem**: Circular dependencies
-- **Solution**: Review dependency chain and restructure
-
-### Documentation Issues
-
-**Problem**: Missing front matter
-- **Solution**: Add complete YAML front matter with required fields
-
-**Problem**: Broken links
-- **Solution**: Validate links with `markdown-link-check`
-
-### Development Issues
-
-**Problem**: Build errors
-- **Solution**: Run `npm run type-check` and `npm run lint` locally
+### Database Errors
 
 **Problem**: Database connection issues
-- **Solution**: Check `.env` file and database provider configuration
+- **Solution**: Check `.env` file configuration
+- **Check**: `DATABASE_PROVIDER` and `DATABASE_URL` set correctly
+- **Check**: Database exists and is accessible
 
-## Getting Help
+### Component Errors
 
-### Documentation
-
-- Review [ABOUT.documentation.md](docs/ABOUT.documentation.md) for documentation questions
-- Check [README.task-management.md](docs/development/README.task-management.md) for task questions
-- See [README.ui-style-guide.md](docs/development/README.ui-style-guide.md) for UI questions
-
-### Task Management
-
-- Review task file structure and examples
-- Check task dependencies before starting work
-- Update task status as work progresses
-- Reference task IDs in commit messages
-
-### Code Issues
-
-- Check project README for setup instructions
-- Review error messages and logs
-- Validate configuration files
-- Test locally before committing
+**Problem**: Component not rendering
+- **Solution**: Check props interface matches usage
+- **Check**: Required props provided
+- **Check**: Client component has `"use client"` directive
 
 ## Best Practices
 
 ### For AI Agents
 
-1. **Always check tasks first**: Review task files before starting work
-2. **Update task status**: Keep task status current with work progress
-3. **Follow documentation standards**: Use templates and maintain consistency
-4. **Validate before committing**: Run checks locally
-5. **Reference tasks**: Include task IDs in commit messages
-6. **Update documentation**: Keep docs current with code changes
-7. **Respect dependencies**: Only work on tasks with completed dependencies
+1. **Read guides before coding** - Understand patterns first
+2. **Follow TypeScript patterns** - No shortcuts with `any`
+3. **Use existing components** - Don't recreate layout components
+4. **Validate with Zod** - Always validate tRPC inputs
+5. **Handle loading states** - Use loaders for async data
+6. **Update documentation** - Keep docs current with changes
+7. **Test locally** - Run type-check, lint, and build before committing
 
 ### Code Quality
 
-- Write clear, maintainable code
-- Follow TypeScript best practices
-- Use consistent formatting
-- Add comments for complex logic
-- Test thoroughly before committing
+- **Type safety**: Leverage TypeScript fully
+- **Component composition**: Reuse existing components
+- **Error handling**: Always handle errors gracefully
+- **Loading states**: Show loaders during async operations
+- **Accessibility**: Use semantic HTML and ARIA attributes
 
 ### Documentation
 
-- Use appropriate templates
-- Include complete front matter
-- Link related documents
-- Keep examples current
-- Update as code evolves
+- **Follow templates**: Use templates from `docs/templates/`
+- **YAML front matter**: Include complete metadata
+- **Link related docs**: Use `related_docs` in front matter
+- **Keep updated**: Update docs when code changes
+
+## Getting Help
+
+### Documentation Resources
+
+- **Guides**: Check `docs/guides/` for how-to documentation
+- **Development**: Check `docs/development/` for project-specific info
+- **Templates**: Check `docs/templates/` for documentation templates
+
+### Example Code
+
+- **Pages**: Review `app/page.tsx` and `app/project-management/page.tsx`
+- **Components**: Review `components/layouts/` for examples
+- **tRPC**: Review `lib/trpc/routers/` for API examples
+- **Database**: Review `lib/db/schema.ts` for schema examples
+
+### Template Project
+
+- **PRD**: `projects/template-project/PRD.txt` - Real-world PRD example
+- **Plans**: `projects/template-project/plans/` - Project planning example
+- **Tasks**: `projects/template-project/tasks/` - Task management example
+- **Resources**: `projects/template-project/resources/` - Resource organization
+
+## Quick Reference
+
+### Essential Files
+
+```
+app/layout.tsx                 # Root layout
+app/page.tsx                   # Homepage
+app/globals.css                # Global styles
+lib/trpc/routers/_app.ts       # Main tRPC router
+lib/db/schema.ts               # Database schema
+components/layouts/index.ts    # Layout components
+components/ui/                 # UI components
+```
+
+### Essential Commands
+
+```bash
+npm run dev          # Development server
+npm run build        # Production build
+npm run type-check   # TypeScript validation
+npm run lint         # ESLint validation
+npm run db:generate  # Generate migrations
+npm run db:migrate   # Run migrations
+npm run db:studio    # Open database UI
+```
+
+### Essential Patterns
+
+```typescript
+// Page structure
+<AppLayout title="Title" navItems={navItems}>
+  <ContentSection title="Section">Content</ContentSection>
+</AppLayout>
+
+// Props interface
+export interface MyProps {
+  required: string;
+  optional?: string;
+}
+
+// tRPC query
+const { data, isLoading } = trpc.feature.getData.useQuery();
+
+// Database query
+const data = await db.select().from(table);
+```
 
 ---
 
-_This document provides essential guidance for AI agents working on this project. Keep it updated as workflows evolve._
+**This guide is your starting point.** Read the linked guides for detailed information on each topic. The project is designed to be intuitive for AI agents with comprehensive documentation throughout.

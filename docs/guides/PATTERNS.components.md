@@ -10,8 +10,8 @@ categories: ["development", "ui-design"]
 difficulty: "beginner"
 prerequisites: ["react", "typescript"]
 related_docs:
-  - "PATTERNS.typescript.md"
-  - "README.ui-style-guide.md"
+  - "../guides/PATTERNS.typescript.md"
+  - "../development/README.ui-style-guide.md"
 dependencies: []
 llm_context: "high"
 search_keywords: ["component patterns", "layout patterns", "ui components", "sirius design"]
@@ -195,5 +195,4 @@ export default function ScansPage() {
 ---
 
 _All components must follow these patterns for consistency._
-
 

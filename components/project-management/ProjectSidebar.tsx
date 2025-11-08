@@ -1,9 +1,10 @@
 'use client';
 
+import Link from 'next/link';
 import { trpc } from '@/lib/trpc/client';
 import { calculateProjectProgress, flattenTasks } from '@/lib/utils/project-utils';
 import type { ProjectInfo } from '@/lib/types/project-management';
-import { Folder, FileText, RefreshCw } from 'lucide-react';
+import { Folder, FileText, RefreshCw, Home } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 
@@ -42,6 +43,17 @@ export function ProjectSidebar({ selectedProject, onProjectSelect }: ProjectSide
 
   return (
     <div>
+      {/* Home Link */}
+      <Link href="/">
+        <Button
+          variant="ghost"
+          className="w-full justify-start mb-4 text-gray-300 hover:text-violet-300 hover:bg-violet-500/10"
+        >
+          <Home className="h-4 w-4 mr-2" />
+          Home
+        </Button>
+      </Link>
+
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold text-white">Projects</h2>
         <Button

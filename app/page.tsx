@@ -4,7 +4,13 @@ import { trpc } from "@/lib/trpc/client";
 import { ActiveConstellationV2Loader } from "@/components/loaders";
 import { AppLayout } from "@/components/layouts";
 import { ContentSection } from "@/components/layouts";
-import { Home as HomeIcon, Package, FolderKanban, Layout } from "lucide-react";
+import {
+  Home as HomeIcon,
+  Package,
+  FolderKanban,
+  Layout,
+  BookOpen,
+} from "lucide-react";
 
 const navItems = [
   { label: "Home", href: "/", icon: <HomeIcon className="h-5 w-5" /> },
@@ -17,6 +23,11 @@ const navItems = [
     label: "Projects",
     href: "/project-management",
     icon: <FolderKanban className="h-5 w-5" />,
+  },
+  {
+    label: "Documentation",
+    href: "/documentation",
+    icon: <BookOpen className="h-5 w-5" />,
   },
   {
     label: "Layout Demo",
@@ -32,7 +43,7 @@ export default function Home() {
     trpc.example.getServerTime.useQuery();
 
   return (
-    <AppLayout title="Dashboard" navItems={navItems}>
+    <AppLayout title="Sirius Scan Style Guide" navItems={navItems}>
       <div className="space-y-6">
         <ContentSection title="Style Guide Boilerplate" variant="primary">
           <p className="text-gray-300 text-lg">

@@ -98,6 +98,17 @@ The application code is in the root directory (`app/`, `components/`, `lib/`, et
 - **[README.ui-style-guide.md](docs/development/README.ui-style-guide.md)**: UI style guide template
 - **[AGENTS.md](AGENTS.md)**: AI agent guidance and workflows
 
+### Developer Guides
+
+- **[Creating Pages](docs/guides/GUIDE.creating-pages.md)**: How to create new pages in Next.js
+- **[Component Usage](docs/guides/GUIDE.component-usage.md)**: Layout and UI component patterns
+- **[Styling Conventions](docs/guides/GUIDE.styling-conventions.md)**: Tailwind CSS and styling patterns
+- **[tRPC API Development](docs/guides/GUIDE.trpc-api-development.md)**: Building type-safe APIs
+- **[Database Development](docs/guides/GUIDE.database-development.md)**: Drizzle ORM patterns
+- **[Code Organization](docs/guides/PATTERNS.code-organization.md)**: File structure and naming conventions
+- **[Component Patterns](docs/guides/PATTERNS.components.md)**: Mandatory component patterns
+- **[TypeScript Patterns](docs/guides/PATTERNS.typescript.md)**: TypeScript conventions
+
 ### Project Documentation
 
 - **[Migration Guide](docs/development/GUIDE.using-boilerplate.md)**: Step-by-step guide to use this boilerplate

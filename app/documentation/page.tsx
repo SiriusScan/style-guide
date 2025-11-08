@@ -3,9 +3,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { AppLayout } from '@/components/layouts';
-import { ProjectSidebar } from '@/components/project-management/ProjectSidebar';
-import { TaskViewer } from '@/components/project-management/TaskViewer';
-import { getRefreshIntervalPreference } from '@/lib/utils/storage-utils';
+import { DocSidebar } from '@/components/documentation/DocSidebar';
+import { DocViewer } from '@/components/documentation/DocViewer';
 import { Home as HomeIcon, Package, FolderKanban, Layout, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -17,13 +16,12 @@ const navItems = [
   { label: 'Layout Demo', href: '/app-layout-demo', icon: <Layout className="h-5 w-5" /> },
 ];
 
-export default function ProjectManagementPage() {
-  const [selectedProject, setSelectedProject] = useState<string | null>(null);
-  const refreshInterval = getRefreshIntervalPreference();
+export default function DocumentationPage() {
+  const [selectedDocPath, setSelectedDocPath] = useState<string | null>(null);
 
   return (
     <AppLayout
-      title="Project Management"
+      title="Documentation"
       navItems={navItems}
       headerActions={
         <Link href="/">
@@ -34,15 +32,15 @@ export default function ProjectManagementPage() {
         </Link>
       }
       sidebarContent={
-        <ProjectSidebar
-          selectedProject={selectedProject}
-          onProjectSelect={setSelectedProject}
+        <DocSidebar
+          selectedDocPath={selectedDocPath}
+          onDocSelect={setSelectedDocPath}
         />
       }
       contentClassName="overflow-hidden p-0"
     >
       <div className="h-full overflow-hidden">
-        <TaskViewer projectName={selectedProject} refreshInterval={refreshInterval} />
+        <DocViewer docPath={selectedDocPath} onDocSelect={setSelectedDocPath} />
       </div>
     </AppLayout>
   );

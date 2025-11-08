@@ -10,8 +10,8 @@ categories: ["project-management"]
 difficulty: "beginner"
 prerequisites: []
 related_docs:
-  - "PATTERNS.typescript.md"
-  - "PATTERNS.components.md"
+  - "../guides/PATTERNS.typescript.md"
+  - "../guides/PATTERNS.components.md"
   - "README.ui-style-guide.md"
 dependencies: []
 llm_context: "high"
@@ -70,11 +70,13 @@ style-guide/
 │   │   ├── GridLayout.tsx
 │   │   └── index.ts
 │   └── ui/                  # ShadCN components
-├── docs/development/
-│   ├── PATTERNS.typescript.md    # TypeScript patterns (mandatory)
-│   ├── PATTERNS.components.md    # Component patterns (mandatory)
-│   ├── README.ui-style-guide.md  # UI style guide
-│   └── SUMMARY.setup.md          # This file
+├── docs/
+│   ├── guides/
+│   │   ├── PATTERNS.typescript.md    # TypeScript patterns (mandatory)
+│   │   └── PATTERNS.components.md    # Component patterns (mandatory)
+│   └── development/
+│       ├── README.ui-style-guide.md  # UI style guide
+│       └── SUMMARY.setup.md          # This file
 └── lib/
     ├── trpc/                # tRPC setup
     └── db/                  # Drizzle ORM setup
@@ -222,8 +224,8 @@ npm run dev
 ## Next Steps
 
 1. **Read the patterns**:
-   - [TypeScript Patterns](./PATTERNS.typescript.md)
-   - [Component Patterns](./PATTERNS.components.md)
+   - [TypeScript Patterns](../guides/PATTERNS.typescript.md)
+   - [Component Patterns](../guides/PATTERNS.components.md)
 
 2. **Review examples**:
    - Check `app/page.tsx` for Sirius styling example

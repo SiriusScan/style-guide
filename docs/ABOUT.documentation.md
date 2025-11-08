@@ -95,12 +95,38 @@ docs/
 │   ├── TEMPLATE.troubleshooting.md
 │   ├── TEMPLATE.architecture.md
 │   └── TEMPLATE.api.md
-├── development/                     # Development documentation
-│   ├── README.ui-style-guide.md
-│   ├── README.task-management.md
-│   └── README.testing.md
-└── [additional directories as needed]
+├── guides/                          # Developer guides (how-to)
+│   ├── GUIDE.creating-pages.md
+│   ├── GUIDE.component-usage.md
+│   ├── GUIDE.styling-conventions.md
+│   ├── GUIDE.trpc-api-development.md
+│   ├── GUIDE.database-development.md
+│   ├── PATTERNS.components.md
+│   ├── PATTERNS.typescript.md
+│   └── PATTERNS.code-organization.md
+└── development/                     # Project-specific documentation
+    ├── README.ui-style-guide.md
+    ├── README.task-management.md
+    ├── README.testing.md
+    └── README.new-project.md
 ```
+
+### Directory Organization
+
+**`docs/guides/`** - Developer guides and tutorials
+- **Purpose**: Step-by-step guides for common development tasks
+- **When to use**: Creating how-to documentation, patterns, and tutorials
+- **Examples**: How to create pages, use components, develop APIs
+
+**`docs/development/`** - Project-specific development documentation
+- **Purpose**: Project setup, workflows, and project-specific information
+- **When to use**: Project configuration, setup instructions, project-specific patterns
+- **Examples**: Task management system, UI style guide, testing workflows
+
+**`docs/templates/`** - Documentation templates
+- **Purpose**: Templates for creating new documentation
+- **When to use**: Starting new documentation files
+- **Examples**: Guide template, reference template, troubleshooting template
 
 ### YAML Front Matter Standards
 
