@@ -1,166 +1,122 @@
-# New Project Setup System - Summary
+# OpenCode Commands Summary
 
-## What Was Accomplished
+## Quick Command Reference
 
-### 1. OpenCode Command Enhancement
+### For New Users
 
-**File**: `.opencode/command/new-project.md`
+- **`@use-template`** ⭐ **START HERE** - Use this boilerplate to create your new application
+  - First command for new developers
+  - Guides through GitHub template or degit usage
+  - Runs setup wizard
+  - Gets you coding in < 5 minutes
 
-Enhanced the new-project command with:
-- Clear objective: Structure setup only (no content filling)
-- Step-by-step instructions for copying template
-- Directory structure verification
-- File confirmation checklist
-- Clear "what NOT to do" guidelines
-- Task file format reference
-- Validation instructions
-- Example usage scenarios
+### For Existing Users
 
-### 2. Comprehensive Documentation
+- **`@create-subproject`** (formerly `@new-project`) - Create project folders for organization
+  - Organize multiple initiatives within your app
+  - Set up PRD and task management
+  - Internal project structure only
 
-**File**: `docs/development/README.new-project.md`
+## Command Details
 
-Created detailed guide covering:
-- Purpose and when to use
-- Quick reference for setup
-- Project structure explanation
-- File preparation guidelines (structure only)
-- Setup checklist
-- What NOT to do section
-- Planning and development phase overview
-- Task file reference and validation
-- Examples and troubleshooting
+### `@use-template` - Start New Application
 
-### 3. Projects Directory Organization
+**When to use**: You want to create a brand new standalone application
 
-**File**: `projects/README.md`
+**What it does**:
 
-Created directory overview with:
-- Structure explanation
-- Template usage instructions
-- Workflow phases (setup → planning → development)
-- Task file format reference
-- OpenCode command integration
-- Validation instructions
-- Examples and tips
-- Troubleshooting guide
+1. Guides through template usage (GitHub/degit/clone)
+2. Explains `npm install && npm run setup`
+3. Shows verification steps
+4. Links to customization guides
 
-### 4. Template Enhancement
+**Output**: A fully configured new application ready for development
 
-**Files Modified**:
-- `projects/template-project/tasks/task-list-1.json` - Created empty starter template
-- `projects/init/` - Cleaned up (now reference only)
-
-## Key Principles
-
-### Structure Only Approach
-
-The new-project command focuses on **structure setup only**:
-
-✅ **Do**: Copy template directory and verify structure
-❌ **Don't**: Fill out PRD, create tasks, or add content
-
-### Three-Phase Workflow
-
-1. **Setup Phase** (this command):
-   - Copy `template-project` to new project name
-   - Verify directory structure
-   - Confirm template files exist
-
-2. **Planning Phase** (next step):
-   - Fill out PRD.txt with project details
-   - Create tasks in task-list-1.json
-   - Define timeline and milestones
-
-3. **Development Phase** (later):
-   - Execute tasks in priority order
-   - Update task status
-   - Add resources as needed
-
-## Template Structure
-
-```
-projects/template-project/
-├── PRD.txt              # Empty template with all sections
-├── plans/               # Planning documents directory
-│   └── example-plan.md  # Example structure
-├── resources/           # Resources directory
-│   └── README.md        # Organization guide
-└── tasks/               # Task management directory
-    ├── example-tasks.json    # Full schema reference (DO NOT MODIFY)
-    └── task-list-1.json      # Empty starter (USE THIS)
-```
-
-## Usage Flow
-
-### For Users
-
-```bash
-# In OpenCode
-@new-project
-
-# Or manually
-cd projects/
-cp -r template-project my-new-project
-ls -la my-new-project/  # Verify structure
-```
-
-### For AI Agents
-
-1. Read `.opencode/command/new-project.md` for instructions
-2. Copy template directory to new project name
-3. Verify structure exists
-4. **Stop** - Do not fill out content
-5. Inform user that structure is ready for planning phase
-
-## File References
-
-### Documentation
-- `docs/development/README.new-project.md` - Full setup guide
-- `docs/development/README.task-management.md` - Task system documentation
-- `projects/README.md` - Projects directory overview
-
-### Templates
-- `projects/template-project/` - Base template to copy
-- `projects/template-project/PRD.txt` - Empty PRD template
-- `projects/template-project/tasks/example-tasks.json` - Full schema reference
-- `projects/template-project/tasks/task-list-1.json` - Empty starter
-
-### Commands
-- `.opencode/command/new-project.md` - OpenCode command definition
-
-## Validation
-
-After creating tasks (during planning phase):
-
-```bash
-# Validate single file
-node scripts/validate-tasks.js projects/[project-name]/tasks/task-list-1.json
-
-# Validate all tasks
-node scripts/validate-tasks.js projects/[project-name]/tasks/*.json
-```
-
-## Next Steps
-
-After running new-project command:
-
-1. **User fills out PRD** during planning phase
-2. **User creates tasks** in task-list-1.json
-3. **Development begins** following task system
-4. **Progress tracked** via task status updates
-
-## Technical Notes
-
-- Task files follow JSON Schema Draft 7
-- Validation script ensures compliance
-- Example files serve as references (never modified)
-- Empty starter file ready for immediate use
-- Directory structure supports arbitrary resource additions
+**Time**: ~5 minutes
 
 ---
 
-_Created: 2025-11-08_
-_Purpose: Document the new-project setup system for future reference_
+### `@create-subproject` - Organize Projects Within App
 
+**When to use**: You want to organize multiple projects/initiatives within your existing app
 
+**What it does**:
+
+1. Copies `projects/template-project/` to new name
+2. Verifies directory structure
+3. Explains PRD and task file setup
+4. Links to planning documentation
+
+**Output**: A project folder with PRD template, task files, and resources directory
+
+**Time**: ~2 minutes
+
+---
+
+## Command Decision Tree
+
+```
+Are you starting a new application?
+├─ YES → Use @use-template
+│         (First time using this boilerplate)
+│
+└─ NO → Do you need project organization folders?
+          ├─ YES → Use @create-subproject
+          │         (Already have an app, need to organize work)
+          │
+          └─ NO → Check documentation:
+                    - README.md for general info
+                    - docs/ for guides
+                    - QUICKSTART.md for quick reference
+```
+
+## Common Scenarios
+
+### Scenario 1: "I want to build a SaaS app"
+
+**Command**: `@use-template`  
+**Why**: You need the entire boilerplate as your starting point
+
+### Scenario 2: "I'm building multiple features in my app"
+
+**Command**: `@create-subproject`  
+**Why**: Organize each feature as a separate project with its own tasks
+
+### Scenario 3: "I want to add a component"
+
+**Command**: None yet (manual process)  
+**See**: `docs/guides/GUIDE.component-usage.md`
+
+### Scenario 4: "I want to deploy"
+
+**Command**: None yet (manual process)  
+**See**: `DEPLOYMENT.md` and `VERCEL_SETUP.md`
+
+## File Locations
+
+```
+.opencode/
+├── SUMMARY.md              # This file
+└── command/
+    ├── use-template.md     # For starting new applications
+    └── new-project.md      # For creating sub-projects (renamed purpose)
+```
+
+## Related Documentation
+
+- **[QUICKSTART.md](../QUICKSTART.md)** - Quick start guide
+- **[README.md](../README.md)** - Full documentation
+- **[STARTER_TEMPLATE_ANALYSIS.md](../STARTER_TEMPLATE_ANALYSIS.md)** - Template usage analysis
+- **[docs/development/GUIDE.using-boilerplate.md](../docs/development/GUIDE.using-boilerplate.md)** - Detailed setup guide
+- **[projects/README.md](../projects/README.md)** - Project organization guide
+
+## Future Commands (Planned)
+
+- `@setup-database` - Database configuration wizard
+- `@add-component` - Add ShadCN UI components
+- `@generate-api` - Generate tRPC router scaffolding
+- `@deploy` - Deployment preparation checklist
+
+---
+
+_This summary helps developers quickly find the right command for their use case._

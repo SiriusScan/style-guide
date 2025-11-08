@@ -66,14 +66,57 @@ This repository itself is a complete Next.js full-stack boilerplate:
 
 The application code is in the root directory (`app/`, `components/`, `lib/`, etc.).
 
-## Quick Start
+## 🚀 Quick Start
 
-### Using the Boilerplate
+**New to this boilerplate?** Start here! ⭐
 
-1. **Fork or copy this repository**: Use this entire repository as your starting point
-2. **Update configuration**: Modify `package.json`, environment variables, etc.
-3. **Customize**: Add your features and components
-4. **Deploy**: Follow deployment instructions in the migration guide
+### Step 1: Get the Template
+
+**Option A: GitHub Template (Recommended)**
+
+Click the **"Use this template"** button at the top of this page to create your own repository.
+
+**Option B: Degit (Fast)**
+
+```bash
+npx degit your-org/style-guide my-new-app
+cd my-new-app
+```
+
+**Option C: Clone**
+
+```bash
+git clone https://github.com/your-org/style-guide.git my-new-app
+cd my-new-app
+rm -rf .git && git init  # Start fresh
+```
+
+### Step 2: Install & Setup
+
+```bash
+npm install
+npm run setup  # Interactive setup wizard
+```
+
+### Step 3: Start Building
+
+```bash
+npm run dev  # http://localhost:3000
+```
+
+**That's it! You're ready to build.** 🎉
+
+See [QUICKSTART.md](./QUICKSTART.md) for detailed instructions or use the `@use-template` command in OpenCode.
+
+---
+
+### For Advanced Users
+
+#### Creating Sub-Projects (Internal Organization)
+
+Already have your app running? Want to organize multiple projects/features within it?
+
+See [projects/README.md](./projects/README.md) or use `@create-subproject` command.
 
 ### Setting Up Documentation
 

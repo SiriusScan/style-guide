@@ -1,13 +1,27 @@
 ---
-description: Creates a new project folder with essential files and structure from the template.
+description: Creates a new sub-project folder for organizing work WITHIN your application. Use @use-template first if starting a new app.
 agent: build
 ---
 
-# New Project Setup
+# Create Sub-Project (Internal Organization)
+
+## ⚠️ Important: Is This What You Need?
+
+**This command is for creating PROJECT FOLDERS within an existing application.**
+
+If you're trying to:
+- ✅ Start a NEW standalone application → Use **`@use-template`** instead
+- ✅ Fork/clone this boilerplate for your app → Use **`@use-template`** instead
+
+If you're trying to:
+- ✅ Organize multiple projects WITHIN your app → You're in the right place!
+- ✅ Set up PRD and task management → You're in the right place!
 
 ## Objective
 
-Set up a new project folder from the template with proper directory structure, PRD template, and task file templates. **This is structure setup only** - content development happens during planning phase.
+Set up a new project folder from the template with proper directory structure, PRD template, and task file templates for organizing work WITHIN your application. **This is structure setup only** - content development happens during planning phase.
+
+**Prerequisites**: You should have already used this repository as your app boilerplate.
 
 ## Instructions
 
@@ -81,7 +95,9 @@ ls -la user-dashboard/
 
 ## Reference
 
-Full guide: `docs/development/README.new-project.md`
+- **Full guide**: `docs/development/README.new-project.md`
+- **For starting a new app**: Use `@use-template` command
+- **Project organization**: `projects/README.md`
 
 ## Task File Format Reference
 
