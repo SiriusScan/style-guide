@@ -400,3 +400,5 @@ Reference animation classes from `app/globals.css`:
 
 _Follow these conventions for consistent styling across the application._
 
+
+

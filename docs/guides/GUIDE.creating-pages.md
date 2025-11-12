@@ -396,3 +396,5 @@ When creating a new page, ensure:
 
 _Follow this guide to ensure consistent page structure across the application._
 
+
+

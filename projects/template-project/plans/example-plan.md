@@ -100,3 +100,5 @@ Tasks are organized in phases and tracked in `tasks/example-tasks.json`:
 _This is an example project plan. Customize sections and structure as needed for your specific project._
 
 
+
+

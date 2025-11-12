@@ -196,3 +196,5 @@ export default function ScansPage() {
 
 _All components must follow these patterns for consistency._
 
+
+
